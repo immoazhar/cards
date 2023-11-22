@@ -1,0 +1,144 @@
+:root {
+  --container--color: #fff;
+  --small-font-size: 16px;
+  --h2-font-size: 25px;
+  --title-color: black;
+}
+.container {
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
+}
+.card-container {
+  display: grid;
+  row-gap: 3.5rem;
+}
+.card-article {
+  position: relative;
+  overflow: hidden;
+}
+.card--img {
+  width: 328px;
+  border-radius: 1.5rem;
+}
+.card-data span {
+  /* text-align: center; */
+  margin: auto;
+}
+.card-data {
+  width: 280px;
+  background-color: var(--container--color);
+  padding: 1.5rem 1rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+.card-description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: 0.25rem;
+}
+
+.card-title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: 0.75rem;
+}
+
+.card-button {
+  text-decoration: none;
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  font-size: 18px;
+}
+.card-button:hover {
+  text-decoration: underline;
+}
+.card-article:hover .card-data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.card-article:hover {
+  animation: remove-overflow 2s forwards;
+}
+.card-article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+.card-article:not(:hover) .card-data {
+  animation: remove-data 1s forwards;
+}
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(0.5rem);
+  }
+}
+@keyframes show-data {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+  .card-data {
+    width: 250px;
+    padding: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+@media screen and (min-width: 1120px)
+ {
+  .container {
+    height: 100vh;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card--img{
+    width: 348px;
+  }
+   .card-data{
+    width: 316px;
+    padding-inline: 2.5rem;
+   }
+}
